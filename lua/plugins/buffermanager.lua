@@ -6,6 +6,7 @@ return {
             order_buffers = "lastused",
             focus_alternate_buffer = true,
             loop_nav = true,
+            short_file_names = true,
         })
     end,
 }
