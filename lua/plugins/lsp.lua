@@ -8,6 +8,7 @@ return {
             servers = {
                 ols = {},
                 clangd = {},
+                pyright = {},
             },
         },
     },

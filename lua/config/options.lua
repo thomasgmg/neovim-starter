@@ -9,3 +9,5 @@ vim.opt.softtabstop = 4 -- Number of spaces for a <Tab> in insert mode
 
 --  set global autoformat
 vim.g.autoformat = true
+
+vim.g.lazyvim_python_lsp = "pyright"
