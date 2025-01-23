@@ -4,10 +4,10 @@ return {
     opts = function(_, opts)
         local file_win_opts = {
             -- fullscreen = true,
-            -- preview = {
-            -- layout = "vertical",
-            -- vertical = "up:70%",
-            -- },
+            preview = {
+                layout = "vertical",
+                vertical = "down:50%",
+            },
         }
         return {
             defaults = {
@@ -16,7 +16,7 @@ return {
             },
             files = {
                 winopts = file_win_opts,
-                previewer = false,
+                -- previewer = "false",
                 cmd = "find",
                 find_opts = [[-type f -not -path '*/\.git/*' -printf "%f\n"]],
             },
