@@ -17,8 +17,18 @@ local set_autoformat = function(pattern, bool_val)
     })
 end
 
+set_autoformat({ "java" }, false)
 -- set_autoformat({ "cpp" }, true)
 -- set_autoformat({ "fish" }, false)
 -- set_autoformat({ "lua" }, true)
 -- set_autoformat({ "perl" }, false)
 -- set_autoformat({ "yaml" }, false)
+
+vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "BufLeave" }, {
+    pattern = "*",
+    callback = function()
+        if vim.bo.modifiable and vim.bo.filetype ~= "oil" then
+            vim.cmd("silent! write")
+        end
+    end,
+})
