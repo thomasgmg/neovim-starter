@@ -22,6 +22,11 @@ return {
         opts = {
             colorscheme = "kanagawa",
             -- colorscheme = "tokyonight-night",
+
+            keys = {
+                -- Remove LSP signature help on <C-k>
+                { "<C-k>", false, mode = "i" },
+            },
         },
     },
 }
