@@ -6,8 +6,11 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.shiftwidth = 4 -- Number of spaces for indentation
 vim.opt.tabstop = 4 -- Number of spaces a <Tab> counts for
 vim.opt.softtabstop = 4 -- Number of spaces for a <Tab> in insert mode
+vim.opt.scrolloff = 10 -- Lines of context
 
 --  set global autoformat
 vim.g.autoformat = true
 
 vim.g.lazyvim_python_lsp = "pyright"
+
+
