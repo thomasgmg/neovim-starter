@@ -42,5 +42,14 @@ return {
             desc = "Conditional-Breakpoint",
             remap = false,
         },
-    },
+        {
+            "<leader>dx",
+            function()
+                require("persistent-breakpoints.api").clear_all_breakpoints()
+            end,
+            silent = true,
+            desc = "Clear breakpoints",
+            remap = false,
+        },
+      },
 }

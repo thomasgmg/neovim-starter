@@ -55,13 +55,13 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
     end,
 })
 
--- buffer manager ---------------
-
--- vim.keymap.set("n", "<A-s>", ":wa<CR>", { desc = "Save all buffers (Alt-S)" })
--- vim.keymap.set("i", "<A-s>", "<Esc>:wa<CR>i", { desc = "Save all buffers and return to insert mode (Alt-S)" })
---
 vim.keymap.set("i", "<Tab><Tab>", "<Esc>==gi", {
     desc = "Auto indent in insert mode",
     noremap = true,
     silent = true,
 })
+
+vim.keymap.set("n", "<leader>bs", function()
+    vim.g.auto_save_enabled = not vim.g.auto_save_enabled
+    print("Auto-save " .. (vim.g.auto_save_enabled and "enabled" or "disabled"))
+end, { desc = "Toggle Auto-Save" })

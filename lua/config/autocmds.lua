@@ -24,11 +24,33 @@ set_autoformat({ "java" }, false)
 -- set_autoformat({ "perl" }, false)
 -- set_autoformat({ "yaml" }, false)
 
+local auto_save_enabled = true
+
 vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "BufLeave" }, {
     pattern = "*",
+
     callback = function()
-        if vim.bo.modifiable and vim.bo.filetype ~= "oil" then
+        local filetype = vim.bo.filetype
+
+        -- Define excluded filetypes
+        local excluded_filetypes = { "oil", "buffer_manager" }
+
+        -- Function to check if a value exists in a table
+        local function is_excluded(value, list)
+            for _, v in ipairs(list) do
+                if v == value then
+                    return true
+                end
+            end
+            return false
+        end
+
+        -- Auto-save condition: must be enabled, modifiable, and not in the exclusion list
+        if vim.bo.modifiable and not is_excluded(filetype, excluded_filetypes) then
             vim.cmd("silent! write")
         end
     end,
 })
+
+-- Make `auto_save_enabled` globally accessible for keymap toggle
+vim.g.auto_save_enabled = auto_save_enabled
