@@ -27,6 +27,14 @@ return {
                     desc = "Step Into",
                     mode = "n",
                 },
+                {
+                    "<F7>",
+                    function()
+                        require("dap").step_out()()
+                    end,
+                    desc = "Step Out",
+                    mode = "n",
+                },
             },
         },
     },
@@ -62,17 +70,26 @@ return {
             end
 
             vim.keymap.set("n", "<F12>", start_custom_debug, { desc = "Start custom debug session" })
+
+            -- Add the Maven compile hook
+            dap.listeners.before.event_initialized["maven-compile"] = function(session, body)
+
+                if session.config.type == "java" then
+                    -- Run `mvn compile` before starting the debug session
+                    local handle = io.popen("mvn compile")
+                    local result = handle:read("*a")
+                    handle:close()
+
+                    -- Check if the compilation was successful
+                    if result:find("BUILD SUCCESS") then
+                        vim.notify("mvn compile succeeded!", vim.log.levels.INFO)
+                    else
+                        vim.notify("mvn compile failed!", vim.log.levels.ERROR)
+                        -- Optionally, stop the debug session if compilation fails
+                        error("Compilation failed. Debug session aborted.")
+                    end
+                end
+            end
         end,
     },
-
-    --     keys = {
-    --         {
-    --             "<F6>",
-    --             function()
-    --                 require("dap").step_over()
-    --             end,
-    --             desc = "Step Over",
-    --         },
-    --     },
-    -- },
 }
