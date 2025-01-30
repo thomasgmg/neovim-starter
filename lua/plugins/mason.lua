@@ -6,6 +6,7 @@ return {
             "clangd",
             "pyright",
             "jdtls",
+            "lemminx",
         },
     },
 }
