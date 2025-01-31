@@ -4,6 +4,9 @@
 
 vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Page Down", silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Page Up", silent = true })
+
 -- buffer manager ---------------
 
 -- Keybinding for Buffer Manager

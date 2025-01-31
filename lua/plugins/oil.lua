@@ -4,6 +4,10 @@ return {
     ---@type oil.SetupOpts
 
     opts = {
+        view_options = {
+            -- Show files and directories that start with "."
+            show_hidden = true,
+        },
         keymaps = {
             -- ["-"] = "<CMD>Oil<CR>",
             ["<CR>"] = "actions.select", -- This will map <CR> to select
