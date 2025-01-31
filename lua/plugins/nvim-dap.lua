@@ -40,6 +40,36 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
+
+        dependencies = {
+            "ldelossa/nvim-dap-projects", -- Project-based DAP configurations
+
+            -- .nvim/nvim-dap.lua
+            -- add this to this file ^^
+
+                -- local dap = require("dap")
+
+                -- dap.configurations.java = {
+                -- 	{
+                -- 		type = "java",
+                -- 		request = "launch",
+                -- 		name = "Custom - Launch MyApp",
+                -- 		mainClass = "com.myapp.Main", -- Replace with your main class
+                -- 		projectName = "MyJavaProject",
+                -- 		args = { "--debug" },
+                -- 		cwd = "${workspaceFolder}",
+                -- 	},
+                -- 	{
+                -- 		type = "java",
+                -- 		request = "attach",
+                -- 		name = "Custom - Attach to Running JVM",
+                -- 		hostName = "127.0.0.1",
+                -- 		port = 5005,
+                -- 	},
+                -- }
+                --
+        },
+
         opts = function(_, opts)
             local dap = require("dap")
 
@@ -73,7 +103,6 @@ return {
 
             -- Add the Maven compile hook
             dap.listeners.before.event_initialized["maven-compile"] = function(session, body)
-
                 if session.config.type == "java" then
                     -- Run `mvn compile` before starting the debug session
                     local handle = io.popen("mvn compile")
@@ -90,6 +119,12 @@ return {
                     end
                 end
             end
+        end,
+    },
+    {
+        "ldelossa/nvim-dap-projects",
+        config = function()
+            require("nvim-dap-projects").search_project_config()
         end,
     },
 }
