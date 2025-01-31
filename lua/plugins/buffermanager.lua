@@ -8,6 +8,8 @@ return {
             focus_alternate_buffer = true,
             loop_nav = true,
             short_file_names = true,
+            width = 80,
+            height = 0.9,
 
             select_menu_item_commands = {
                 edit = {
