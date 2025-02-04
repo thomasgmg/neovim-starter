@@ -9,6 +9,7 @@ return {
                 ols = {},
                 clangd = {},
                 pyright = {},
+                jdtls = {},
             },
             setup = {
                 clangd = function(_, opts)

@@ -18,8 +18,14 @@ return {
                 files = {
                     winopts = file_win_opts,
                     -- previewer = "false",
-                    cmd = "find",
-                    find_opts = [[-type f -not -path '*/\.git/*' -printf "%f\n"]],
+                    -- cmd = "find",
+                    -- find_opts = [[-type f -not -path '*/\.git/*' -printf "%f\n"]],
+                },
+                keymap = {
+                    fzf = {
+                        ["ctrl-y"] = "accept",
+                        ["ctrl-l"] = "accept",
+                    },
                 },
             }
         end,

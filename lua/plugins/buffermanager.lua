@@ -21,7 +21,7 @@ return {
 
         local buffer_manager = require("buffer_manager.ui")
 
-        vim.keymap.set("n", "<C-Tab>", function()
+        vim.keymap.set("n", "<S-Tab>", function()
             buffer_manager.toggle_quick_menu()
         end, {
             desc = "Open/Toggle Buffer Manager or Move Down",

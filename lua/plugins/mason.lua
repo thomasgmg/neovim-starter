@@ -7,6 +7,7 @@ return {
             "pyright",
             "jdtls",
             "lemminx",
+            "debugpy",
         },
     },
 }
