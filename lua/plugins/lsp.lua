@@ -7,9 +7,23 @@ return {
             },
             servers = {
                 ols = {},
-                clangd = {},
+                clangd = {
+                    filetypes = { "c", "cpp", "objc", "objcpp" },
+                },
                 pyright = {},
-                jdtls = {},
+                jdtls = {
+                    settings = {
+                        java = {
+                            project = {
+                                sourcePaths = {
+                                    "src/main/java",
+                                    "src/test/java",
+                                    "target/generated-sources/protobuf/java", -- Maven
+                                },
+                            },
+                        },
+                    },
+                },
             },
             setup = {
                 clangd = function(_, opts)
