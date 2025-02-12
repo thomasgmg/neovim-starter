@@ -54,3 +54,5 @@ vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "BufLeave" }, {
 
 -- Make `auto_save_enabled` globally accessible for keymap toggle
 vim.g.auto_save_enabled = auto_save_enabled
+
+vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")

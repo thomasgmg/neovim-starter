@@ -12,5 +12,3 @@ vim.opt.scrolloff = 10 -- Lines of context
 vim.g.autoformat = true
 
 vim.g.lazyvim_python_lsp = "pyright"
-
-
