@@ -21,8 +21,19 @@ set_autoformat({ "java" }, false)
 -- set_autoformat({ "cpp" }, true)
 -- set_autoformat({ "fish" }, false)
 -- set_autoformat({ "lua" }, true)
--- set_autoformat({ "perl" }, false)
+set_autoformat({ "dart" }, false)
 -- set_autoformat({ "yaml" }, false)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dart",
+  callback = function()
+    vim.opt_local.tabstop = 2       -- Tabs count as 2 spaces
+    vim.opt_local.shiftwidth = 2    -- Indentation uses 2 spaces
+    vim.opt_local.softtabstop = 2   -- Backspace removes 2 spaces
+    vim.opt_local.expandtab = true  -- Use spaces instead of tabs
+  end,
+})
+
 
 local auto_save_enabled = true
 
@@ -56,3 +67,4 @@ vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "BufLeave" }, {
 vim.g.auto_save_enabled = auto_save_enabled
 
 vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+

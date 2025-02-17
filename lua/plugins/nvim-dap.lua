@@ -47,31 +47,68 @@ return {
             -- .nvim/nvim-dap.lua
             -- add this to this file ^^
 
-                -- local dap = require("dap")
+            -- local dap = require("dap")
 
-                -- dap.configurations.java = {
-                -- 	{
-                -- 		type = "java",
-                -- 		request = "launch",
-                -- 		name = "Custom - Launch MyApp",
-                -- 		mainClass = "com.myapp.Main", -- Replace with your main class
-                -- 		projectName = "MyJavaProject",
-                -- 		args = { "--debug" },
-                -- 		cwd = "${workspaceFolder}",
-                -- 	},
-                -- 	{
-                -- 		type = "java",
-                -- 		request = "attach",
-                -- 		name = "Custom - Attach to Running JVM",
-                -- 		hostName = "127.0.0.1",
-                -- 		port = 5005,
-                -- 	},
-                -- }
-                --
+            -- dap.configurations.java = {
+            -- 	{
+            -- 		type = "java",
+            -- 		request = "launch",
+            -- 		name = "Custom - Launch MyApp",
+            -- 		mainClass = "com.myapp.Main", -- Replace with your main class
+            -- 		projectName = "MyJavaProject",
+            -- 		args = { "--debug" },
+            -- 		cwd = "${workspaceFolder}",
+            -- 	},
+            -- 	{
+            -- 		type = "java",
+            -- 		request = "attach",
+            -- 		name = "Custom - Attach to Running JVM",
+            -- 		hostName = "127.0.0.1",
+            -- 		port = 5005,
+            -- 	},
+            -- }
+            --
         },
 
         opts = function(_, opts)
             local dap = require("dap")
+
+            dap.adapters.dart = {
+                type = "executable",
+                -- command = "dart-debug-adapter",
+                command = "dart",
+                args = { "debug_adapter" },
+            }
+            dap.adapters.flutter = {
+                type = "executable",
+                command = "flutter", -- if you're using fvm, you'll need to provide the full path to flutter (flutter.bat for windows users), or you could prepend the fvm command
+                args = { "debug_adapter" },
+                -- windows users will need to set 'detached' to false
+                -- options = {
+                --     detached = false,
+                -- },
+            }
+
+            dap.configurations.dart = {
+                {
+                    type = "dart",
+                    request = "launch",
+                    name = "Debug Dart File",
+                    program = "${file}", -- Current file
+                    dartSdkPath = "/home/pguedes/software/flutter/bin/cache/dart-sdk",
+                    flutterSdkPath = "/home/pguedes/software/flutter",
+                    cwd = "${workspaceFolder}",
+                },
+                {
+                    type = "flutter",
+                    request = "launch",
+                    name = "Launch flutter",
+                    dartSdkPath = "/home/pguedes/software/flutter/bin/cache/dart-sdk",
+                    flutterSdkPath = "/home/pguedes/software/flutter",
+                    program = "${workspaceFolder}/lib/main.dart", -- ensure this is correct
+                    cwd = "${workspaceFolder}",
+                },
+            }
 
             -- Add a new configuration for C/C++
             for _, lang in ipairs({ "c", "cpp" }) do
