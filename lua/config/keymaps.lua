@@ -17,3 +17,7 @@ vim.keymap.set("n", "<leader>bs", function()
     vim.g.auto_save_enabled = not vim.g.auto_save_enabled
     print("Auto-save " .. (vim.g.auto_save_enabled and "enabled" or "disabled"))
 end, { desc = "Toggle Auto-Save" })
+
+-- Build by running :make
+vim.keymap.set("n", "<C-b>", "<cmd>make<cr>", { desc = "Build make" })
+
