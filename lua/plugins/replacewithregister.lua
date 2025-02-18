@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
     "vim-scripts/ReplaceWithRegister",
     config = function()

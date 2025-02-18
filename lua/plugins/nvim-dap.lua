@@ -39,6 +39,7 @@ return {
         },
     },
     {
+        -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
         "mfussenegger/nvim-dap",
 
         dependencies = {
