@@ -15,5 +15,16 @@ return {
         },
         widget_guides = { enabled = true },
         dev_tools = { auto_open_browser = false },
+
+        lsp = {
+            settings = {
+                showTodos = true,
+                completeFunctionCalls = true,
+                -- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+                renameFilesWithClasses = "prompt", -- "always"
+                enableSnippets = true,
+                updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+            },
+        },
     },
 }

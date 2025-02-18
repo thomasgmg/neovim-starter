@@ -6,6 +6,7 @@ return {
                 virtual_text = false,
             },
             servers = {
+                dartls = false,
                 ols = {},
                 clangd = {
                     filetypes = { "c", "cpp", "objc", "objcpp" },
