@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
 
     { "doums/darcula" },
@@ -64,10 +66,10 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
+            colorscheme = "accent",
             -- colorscheme = "kanagawa",
-            colorscheme = "default",
+            -- colorscheme = "default",
             -- colorscheme = "photon",
-            -- colorscheme = "accent",
             -- colorscheme = "meh",
             -- colorscheme = "ice-cave",
             -- colorscheme = "darcula",
@@ -79,36 +81,36 @@ return {
             },
         },
     },
-    {
-        "nvim-lua/plenary.nvim", -- Ensures proper ordering
-        config = function()
-            vim.cmd.colorscheme("default")
-
-            -- Explicitly set transparency
-            local highlights = {
-                "Normal",
-                "NormalNC",
-                "LineNr",
-                "SignColumn",
-                "EndOfBuffer",
-                "CursorLine",
-                "CursorLineNr",
-                "StatusLine",
-                "StatusLineNC",
-            }
-
-            for _, group in ipairs(highlights) do
-                vim.cmd("highlight " .. group .. " guibg=NONE ctermbg=NONE")
-            end
-
-            -- Transparent background for the active window
-            vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
-            vim.cmd([[highlight SignColumn guibg=NONE ctermbg=NONE]])
-            vim.cmd([[highlight EndOfBuffer guibg=NONE ctermbg=NONE]])
-
-            -- Dim inactive windows
-            vim.cmd([[highlight NormalNC guibg=#1e1e1e ctermbg=NONE]]) -- Darker background
-            vim.cmd([[highlight LineNr guibg=NONE ctermbg=NONE]]) -- Keep line numbers normal
-        end,
-    },
+    -- {
+    --     "nvim-lua/plenary.nvim", -- Ensures proper ordering
+    --     config = function()
+    --         vim.cmd.colorscheme("default")
+    --
+    --         -- Explicitly set transparency
+    --         local highlights = {
+    --             "Normal",
+    --             "NormalNC",
+    --             "LineNr",
+    --             "SignColumn",
+    --             "EndOfBuffer",
+    --             "CursorLine",
+    --             "CursorLineNr",
+    --             "StatusLine",
+    --             "StatusLineNC",
+    --         }
+    --
+    --         for _, group in ipairs(highlights) do
+    --             vim.cmd("highlight " .. group .. " guibg=NONE ctermbg=NONE")
+    --         end
+    --
+    --         -- Transparent background for the active window
+    --         vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
+    --         vim.cmd([[highlight SignColumn guibg=NONE ctermbg=NONE]])
+    --         vim.cmd([[highlight EndOfBuffer guibg=NONE ctermbg=NONE]])
+    --
+    --         -- Dim inactive windows
+    --         vim.cmd([[highlight NormalNC guibg=#1e1e1e ctermbg=NONE]]) -- Darker background
+    --         vim.cmd([[highlight LineNr guibg=NONE ctermbg=NONE]]) -- Keep line numbers normal
+    --     end,
+    -- },
 }
