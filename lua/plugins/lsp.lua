@@ -19,7 +19,8 @@ return {
                                 sourcePaths = {
                                     "src/main/java",
                                     "src/test/java",
-                                    "target/generated-sources/protobuf/java", -- Maven
+                                    "target/generated-sources/protobuf/java",
+                                    "target/generated-sources/annotations",
                                 },
                             },
                         },

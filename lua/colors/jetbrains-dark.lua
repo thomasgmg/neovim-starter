@@ -4,8 +4,8 @@ local M = {}
 
 -- Updated Darcula-inspired color palette
 local colors = {
-    bg = "#2B2B2B",          -- Main background
     fg = "#A9B7C6",          -- General text
+    bg = "#1B1B1B",
     selection = "#214283",   -- Selection background (more blue)
     current_line = "#323232",-- Current line highlight
     string = "#6A8759",      -- Strings
