@@ -1,6 +1,11 @@
+if true then
+    return {}
+end
+
 return {
     -- add gruvbox
     "j-morano/buffer_manager.nvim",
+    event = "VeryLazy",
 
     config = function()
         require("buffer_manager").setup({

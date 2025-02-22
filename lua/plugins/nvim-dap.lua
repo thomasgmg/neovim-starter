@@ -1,6 +1,7 @@
 return {
     {
         "folke/which-key.nvim",
+        event = "VeryLazy",
         opts = {
             spec = {
                 {
@@ -41,6 +42,7 @@ return {
     {
         -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
         "mfussenegger/nvim-dap",
+        event = "VeryLazy",
 
         dependencies = {
             "ldelossa/nvim-dap-projects", -- Project-based DAP configurations
@@ -161,6 +163,7 @@ return {
     },
     {
         "ldelossa/nvim-dap-projects",
+        event = "VeryLazy",
         config = function()
             require("nvim-dap-projects").search_project_config()
         end,

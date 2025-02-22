@@ -3,6 +3,7 @@
 return {
     {
         "saghen/blink.cmp",
+        event = "VeryLazy",
         version = "*",
 
         opts = function(_, opts)
@@ -10,7 +11,7 @@ return {
             opts.completion.ghost_text.enabled = false
 
             opts.completion.list = {
-                selection = { 
+                selection = {
                     auto_insert = true,
                     preselect = true,
                 },
@@ -41,7 +42,7 @@ return {
                 ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
                 -- by default is C-k so remap this
-                ['<C-S>'] = { 'show_signature', 'hide_signature', 'fallback' },
+                ["<C-S>"] = { "show_signature", "hide_signature", "fallback" },
             }
         end,
     },
