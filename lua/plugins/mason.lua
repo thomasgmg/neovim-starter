@@ -8,6 +8,7 @@ return {
             "jdtls",
             "lemminx",
             "debugpy",
+            "c3-lsp",
         },
     },
 }

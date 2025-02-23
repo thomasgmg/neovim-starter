@@ -8,6 +8,9 @@ return {
             servers = {
                 dartls = false,
                 ols = {},
+                c3_lsp = {
+                    filetypes = { "c3", "c3i" },
+                },
                 clangd = {
                     filetypes = { "c", "cpp", "objc", "objcpp" },
                 },
