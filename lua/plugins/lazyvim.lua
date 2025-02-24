@@ -9,6 +9,9 @@ return {
     --     priority = 1000, -- Ensure it loads early
     -- },
     {
+        "xiantang/darcula-dark.nvim",
+    },
+    {
         "pmouraguedes/neodarcula.nvim",
         lazy = false,
         priority = 1000,

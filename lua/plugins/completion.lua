@@ -1,5 +1,3 @@
--- nvim-cmp is an extra and needs to be enabled on LazyExtras in order to be able to fetch the default lazyvim configuration
--- this is saved in lazyvim.json
 return {
     {
         "saghen/blink.cmp",
@@ -23,6 +21,12 @@ return {
             -- opts.completion.trigger = {
             --     show_in_snippet = false,
             -- }
+
+            opts.sources = {
+                -- adding any nvim-cmp sources here will enable them with blink.compat
+                compat = {},
+                default = { "lsp", "omni", "path", "snippets", "buffer" },
+            }
 
             opts.keymap = {
                 preset = "none",
