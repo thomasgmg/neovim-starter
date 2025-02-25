@@ -1,5 +1,9 @@
 return {
     {
+        "giuxtaposition/blink-cmp-copilot",
+        event = "VeryLazy",
+    },
+    {
         "saghen/blink.cmp",
         event = "VeryLazy",
         version = "*",

@@ -4,17 +4,21 @@ return {
     -- uncomment for testing local changes
     -- {
     --     dir = "~/projects/nvim/neodarcula.nvim", -- Path to your local plugin
-    --     name = "neodarcula",
+    --     -- name = "neodarcula",
     --     lazy = false, -- Load immediately for testing
     --     priority = 1000, -- Ensure it loads early
+    --
+    --     opts = {
+    --         transparent = true,
+    --     },
     -- },
-    {
-        "xiantang/darcula-dark.nvim",
-    },
     {
         "pmouraguedes/neodarcula.nvim",
         lazy = false,
         priority = 1000,
+        opts = {
+            transparent = true,
+        },
     },
     {
         "LazyVim/LazyVim",
