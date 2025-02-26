@@ -70,7 +70,7 @@ NVIM_APPNAME=pmouraguedes/starter/ nvim
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
 ### lua-colorscheme
 
-+ [ellisonleao/gruvbox.nvim](https://dotfyle.com/plugins/pmouraguedes/neodarcula.nvim)
++ [pmouraguedes/neodarcula.nvim](https://dotfyle.com/plugins/pmouraguedes/neodarcula.nvim)
 + [ellisonleao/gruvbox.nvim](https://dotfyle.com/plugins/ellisonleao/gruvbox.nvim)
 ### motion
 
