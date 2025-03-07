@@ -10,7 +10,7 @@ return {
         opts = {
             suggestion = {
                 enabled = true, -- Enable ghost text
-                auto_trigger = false, -- Show suggestions as you type
+                auto_trigger = true, -- Show suggestions as you type
                 debounce = 75, -- Delay in ms before showing suggestions
                 keymap = {
                     -- accept = "<C-l>", -- Accept full suggestion
