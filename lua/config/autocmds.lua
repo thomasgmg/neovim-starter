@@ -17,7 +17,7 @@ local set_autoformat = function(pattern, bool_val)
     })
 end
 
-set_autoformat({ "java" }, false)
+set_autoformat({ "java" }, true)
 -- set_autoformat({ "cpp" }, true)
 -- set_autoformat({ "fish" }, false)
 -- set_autoformat({ "lua" }, true)

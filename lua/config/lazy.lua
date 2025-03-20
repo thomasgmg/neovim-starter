@@ -21,6 +21,8 @@ require("lazy").setup({
         -- import/override with your plugins
         { import = "plugins" },
     },
+    local_spec = true, -- Enable local specs
+    trust_local_spec = true, -- Automatically trust .lazy.lua files (use with caution)
     defaults = {
         -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
         -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
@@ -52,3 +54,8 @@ require("lazy").setup({
         },
     },
 })
+
+----------
+--- Custom
+
+require("config/custom/fzf")

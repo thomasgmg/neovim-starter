@@ -26,6 +26,18 @@ return {
                                     "target/generated-sources/annotations",
                                 },
                             },
+                            format = {
+                                enabled = true,
+                                settings = {
+                                    url = "~/dev/rp-vertical-pos-app-adapter-local/assco-development-settings/intellij/gebit-eclipse-formatter-settings.xml",
+                                    profile = "GEBIT",
+                                },
+                            },
+                            eclipse = {
+                                preferences = {
+                                    ["org.eclipse.jdt.ui.importorder"] = "java;javax;org;com;de.gebit.trend;de.gebit.pos",
+                                },
+                            },
                         },
                     },
                 },
