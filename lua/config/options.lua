@@ -15,3 +15,5 @@ vim.g.lazyvim_python_lsp = "pyright"
 
 -- let g:table_mode_map_prefix = '<Leader>t'
 vim.g.table_mode_map_prefix = "<Leader>m"
+
+vim.opt.wrap = true
