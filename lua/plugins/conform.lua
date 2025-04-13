@@ -11,6 +11,11 @@ return {
                 -- Pass the config file explicitly. This avoid formatting tags (e.g. #cli to header: # cli)
                 prepend_args = { "--config", vim.fn.expand("~/.markdownlint.json") },
             },
+            sqlfluff = {
+                command = "sqlfluff",
+                args = { "format", "--dialect=ansi", "-" },
+                require_cwd = false, -- Run without needing a root directory
+            },
         },
     },
 }
