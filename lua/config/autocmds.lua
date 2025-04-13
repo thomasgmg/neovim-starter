@@ -43,3 +43,10 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.wo.conceallevel = 0
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sql", -- Only activates for SQL files
+    callback = function()
+        vim.keymap.set("n", "<leader>h", ":normal vip<CR><PLUG>(DBUI_ExecuteQuery)", { buffer = true })
+    end,
+})
