@@ -10,7 +10,7 @@ if is_local then
         priority = 1000, -- Ensure it loads early
 
         opts = {
-            transparent = true,
+            transparent = false,
             dim = true,
         },
     }

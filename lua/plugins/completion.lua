@@ -30,6 +30,14 @@ return {
             sources = {
                 default = { "lsp" }, -- LSP drives the show
                 providers = {
+                    dadbod = {
+                        name = "Dadbod",
+                        module = "vim_dadbod_completion.blink",
+                        enabled = true,
+                        min_keyword_length = 0, -- Trigger instantly after `.`, `->`, etc.
+                        score_offset = 100, -- Prioritize LSP suggestions
+                        max_items = 5, -- Keep it manageable
+                    },
                     lsp = {
                         opts = {},
                         enabled = true,
