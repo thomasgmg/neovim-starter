@@ -12,7 +12,7 @@ return {
             -- Completion triggering behavior
             completion = {
                 trigger = {
-                    show_on_keyword = false, -- Normal keyword triggering
+                    show_on_keyword = true, -- Normal keyword triggering
                     show_on_trigger_character = true, -- Immediate trigger on `.`, `->`, etc.
                     show_on_insert_on_trigger_character = true,
                     prefetch_on_insert = false,
