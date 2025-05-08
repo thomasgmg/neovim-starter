@@ -34,14 +34,6 @@ return {
                 enabled = true,
                 preset = {
                     header = [[
-                                    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-                                    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-                                    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-                                    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-                                    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-                                    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-
-
               __-----_____
              (      |  |  ---_
             /  ()    '-'      |
@@ -61,54 +53,16 @@ return {
                   /      /         \     \                                           \      /  \     \
                  /     -/           \     \                                           |     |   \     |
                 |     /              |     |                                         /     |     \     )
-               /     /               |     |                                        /     /      |     |
+               /     /               |     |        `                               /     /      |     |
           _ _ /     /            ____|     |                                   ____/     /       |     |
          /         /            /         /                                   /         /        /     /
-         \_ _ _ _ /             \________/                                    \________/         (____|
+         \_ _ _ _ /             \________/              TMG                   \________/         (____|
                     ]],
                 },
                 sections = {
-                    --     { section = "header", width = 100000000 },
-                    --     { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-                    --     { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-                    --     { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-                    --     { section = "startup" },
                     { section = "header" },
-                    {
-                        pane = 2,
-                        icon = " ",
-                        section = "keys",
-                        title = "Keymaps",
-                        indent = 2,
-                        padding = 1,
-                    },
-                    {
-                        pane = 2,
-                        icon = " ",
-                        title = "Recent Files",
-                        section = "recent_files",
-                        indent = 2,
-                        padding = 1,
-                    },
-                    { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-                    {
-                        pane = 2,
-                        icon = " ",
-                        title = "Git Status",
-                        section = "terminal",
-                        enabled = function()
-                            return Snacks.git.get_root() ~= nil
-                        end,
-                        cmd = "git status --short --branch --renames",
-                        height = 5,
-                        padding = 1,
-                        ttl = 5 * 60,
-                        indent = 2,
-                    },
+                    { section = "keys", gap = 1, padding = 1 },
                     { section = "startup" },
-                },
-                formats = {
-                    header = { "%s", align = "left", width = 130 },
                 },
             },
         },
