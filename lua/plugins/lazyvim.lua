@@ -1,4 +1,4 @@
-local is_local = false
+local is_local = true
 
 local colorscheme_plugin_table
 
