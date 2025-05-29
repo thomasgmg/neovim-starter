@@ -96,7 +96,14 @@ return {
                         indent = 2,
                         padding = 1,
                     },
-                    { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                    {
+                        pane = 2,
+                        icon = " ",
+                        title = "Projects",
+                        section = "projects",
+                        indent = 2,
+                        padding = 1,
+                    },
                     {
                         pane = 2,
                         icon = "",
