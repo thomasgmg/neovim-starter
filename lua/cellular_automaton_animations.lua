@@ -58,6 +58,7 @@ wave_config.update = function(grid)
 end
 cellular.register_animation(wave_config)
 
+-- Ripple animation
 local ripple_config = {
     fps = 12,
     name = "ripple",
@@ -98,6 +99,7 @@ ripple_config.update = function(grid)
 end
 cellular.register_animation(ripple_config)
 
+-- Jump animation
 local jump_config = {
     fps = 15,
     name = "jump",
@@ -135,11 +137,12 @@ jump_config.update = function(grid)
 end
 cellular.register_animation(jump_config)
 
-local tree_form_config = {
-    fps = 12,
-    name = "tree_form",
+-- Pulse animation
+local pulse_config = {
+    fps = 15,
+    name = "pulse",
 }
-tree_form_config.update = function(grid)
+pulse_config.update = function(grid)
     local n_rows = #grid
     local max_cols = 0
     for i = 1, n_rows do
@@ -150,56 +153,25 @@ tree_form_config.update = function(grid)
     for i = 1, n_rows do
         new_grid[i] = {}
         for j = 1, max_cols do
-            new_grid[i][j] = " " -- Initialize with spaces
+            new_grid[i][j] = grid[i][j] or " "
         end
     end
 
-    -- Define tree shape: triangle canopy (rows 1 to n_rows-3) and trunk (last 3 rows)
-    local canopy_height = math.floor(n_rows * 0.7) -- 70% of rows for canopy
-    local trunk_height = n_rows - canopy_height
-    local center_j = math.floor(max_cols / 2) + 1
-    local tree_positions = {}
-
-    -- Mark canopy positions (triangle)
-    for i = 1, canopy_height do
-        local width = math.floor((canopy_height - i + 1) * max_cols / (2 * canopy_height)) -- Tapered width
-        for j = center_j - width, center_j + width do
-            if j >= 1 and j <= max_cols then
-                table.insert(tree_positions, { i = i, j = j })
-            end
-        end
-    end
-
-    -- Mark trunk positions (3 columns wide, bottom rows)
-    for i = canopy_height + 1, n_rows do
-        for j = center_j - 1, center_j + 1 do
-            if j >= 1 and j <= max_cols then
-                table.insert(tree_positions, { i = i, j = j })
-            end
-        end
-    end
-
-    -- Animation progress (0 to 1, then oscillate)
-    local progress = math.min(os.clock() * 0.5, 1) -- Reach full shape in ~2 seconds
-    local sway = math.cos(os.clock() * 2) * 0.5 -- Slight sway after formation
-
-    -- Map original grid characters to tree positions
-    local char_index = 1
+    local center_i, center_j = n_rows / 2, max_cols / 2
     for i = 1, n_rows do
         for j = 1, max_cols do
-            if grid[i][j] and grid[i][j] ~= " " and char_index <= #tree_positions then
-                local target = tree_positions[char_index]
-                local curr_i = i + math.floor((target.i - i) * progress + sway * (j % 2 == 0 and 1 or -1))
-                local curr_j = j + math.floor((target.j - j) * progress)
-                curr_i = math.max(1, math.min(n_rows, curr_i))
-                curr_j = math.max(1, math.min(max_cols, curr_j))
-                new_grid[curr_i][curr_j] = grid[i][j]
-                char_index = char_index + 1
-            end
+            local di, dj = i - center_i, j - center_j
+            local dist = math.sqrt(di ^ 2 + dj ^ 2)
+            local offset = math.floor(math.cos(os.clock() * 2 + dist * 0.1) * 2) -- Cosine-based radial offset
+            local angle = math.atan2(dj, di)
+            local new_i = math.floor(i + math.cos(angle) * offset)
+            local new_j = math.floor(j + math.sin(angle) * offset)
+            new_i = (new_i - 1) % n_rows + 1
+            new_j = (new_j - 1) % max_cols + 1
+            new_grid[i][j] = grid[new_i][new_j] or " "
         end
     end
 
-    -- Copy new_grid back to grid
     for i = 1, n_rows do
         for j = 1, max_cols do
             grid[i][j] = new_grid[i][j]
@@ -208,4 +180,135 @@ tree_form_config.update = function(grid)
 
     return true
 end
-cellular.register_animation(tree_form_config)
+cellular.register_animation(pulse_config)
+
+-- Vortex animation
+local vortex_config = {
+    fps = 15,
+    name = "vortex",
+}
+vortex_config.update = function(grid)
+    local n_rows = #grid
+    local max_cols = 0
+    for i = 1, n_rows do
+        max_cols = math.max(max_cols, #grid[i])
+    end
+
+    local new_grid = {}
+    for i = 1, n_rows do
+        new_grid[i] = {}
+        for j = 1, max_cols do
+            new_grid[i][j] = grid[i][j] or " "
+        end
+    end
+
+    local center_i, center_j = n_rows / 2, max_cols / 2
+    local direction = math.cos(os.clock() * 0.5) > 0 and 1 or -1 -- Reverse direction every ~6 seconds
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            local di, dj = i - center_i, j - center_j
+            local radius = math.sqrt(di ^ 2 + dj ^ 2)
+            local angle = math.atan2(dj, di) + direction * os.clock() * (0.5 / (radius + 1)) -- Slower rotation farther out
+            local new_i = math.floor(center_i + radius * math.cos(angle))
+            local new_j = math.floor(center_j + radius * math.sin(angle))
+            new_i = (new_i - 1) % n_rows + 1
+            new_j = (new_j - 1) % max_cols + 1
+            new_grid[i][j] = grid[new_i][new_j] or " "
+        end
+    end
+
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            grid[i][j] = new_grid[i][j]
+        end
+    end
+
+    return true
+end
+cellular.register_animation(vortex_config)
+
+-- Drift animation
+local drift_config = {
+    fps = 15,
+    name = "drift",
+}
+drift_config.update = function(grid)
+    local n_rows = #grid
+    local max_cols = 0
+    for i = 1, n_rows do
+        max_cols = math.max(max_cols, #grid[i])
+    end
+
+    local new_grid = {}
+    for i = 1, n_rows do
+        new_grid[i] = {}
+        for j = 1, max_cols do
+            new_grid[i][j] = grid[i][j] or " "
+        end
+    end
+
+    local drift_angle = math.cos(os.clock() * 0.3) * 0.2 + math.pi / 4 -- Oscillate around 45-degree angle
+    local offset_x = math.floor(math.sin(os.clock() * 1.5) * 2 * math.cos(drift_angle))
+    local offset_y = math.floor(math.sin(os.clock() * 1.5) * 2 * math.sin(drift_angle))
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            local new_i = (i + offset_y - 1) % n_rows + 1
+            local new_j = (j + offset_x - 1) % max_cols + 1
+            new_grid[i][j] = grid[new_i][new_j] or " "
+        end
+    end
+
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            grid[i][j] = new_grid[i][j]
+        end
+    end
+
+    return true
+end
+cellular.register_animation(drift_config)
+
+-- Swirl animation
+local swirl_config = {
+    fps = 30, -- Increased for smoother motion
+    name = "swirl",
+}
+swirl_config.update = function(grid)
+    local n_rows = #grid
+    local max_cols = 0
+    for i = 1, n_rows do
+        max_cols = math.max(max_cols, #grid[i])
+    end
+
+    local new_grid = {}
+    for i = 1, n_rows do
+        new_grid[i] = {}
+        for j = 1, max_cols do
+            new_grid[i][j] = grid[i][j] or " "
+        end
+    end
+
+    -- local center_i, center_j = n_rows / 2, max_cols / 2
+    local time = os.clock()
+    local orbit_radius = 3
+    local angle = time * 1.5 -- Slow rotation speed
+    local offset_i = math.floor(orbit_radius * math.cos(angle))
+    local offset_j = math.floor(orbit_radius * math.sin(angle))
+
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            local new_i = (i + offset_i - 1) % n_rows + 1
+            local new_j = (j + offset_j - 1) % max_cols + 1
+            new_grid[i][j] = grid[new_i][new_j] or " "
+        end
+    end
+
+    for i = 1, n_rows do
+        for j = 1, max_cols do
+            grid[i][j] = new_grid[i][j]
+        end
+    end
+
+    return true
+end
+cellular.register_animation(swirl_config)
