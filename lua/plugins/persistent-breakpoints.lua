@@ -1,5 +1,6 @@
 return {
     "Weissle/persistent-breakpoints.nvim",
+    event = "VeryLazy",
     dependencies = {
         {
             "mfussenegger/nvim-dap",
@@ -51,5 +52,5 @@ return {
             desc = "Clear breakpoints",
             remap = false,
         },
-      },
+    },
 }

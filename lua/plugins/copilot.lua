@@ -4,6 +4,7 @@ end
 return {
     {
         "zbirenbaum/copilot.lua",
+        event = "VeryLazy",
         -- cmd = "Copilot",
         -- event = "InsertEnter",
 
