@@ -89,7 +89,8 @@ return {
                     },
                     {
                         pane = 2,
-                        icon = "",
+                        icon = " ",
+                        -- icon = "  ",
                         title = "Recent Files",
                         section = "recent_files",
                         indent = 2,
