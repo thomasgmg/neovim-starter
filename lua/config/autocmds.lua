@@ -19,6 +19,7 @@ end
 
 set_autoformat({ "java" }, true)
 set_autoformat({ "cpp" }, false)
+set_autoformat({ "c" }, false)
 -- set_autoformat({ "fish" }, false)
 -- set_autoformat({ "lua" }, true)
 set_autoformat({ "dart" }, false)
